@@ -1,7 +1,7 @@
 {
-    "clientID": "JW8CFVF87wPZZyer5fkH5OcMCQ4a",
+    "clientID": "mn2QgMsWzdcrzGbD_GzIki7mXTga",
     "baseUrl": "https://api.asgardeo.io/t/pasan",
-    "signInRedirectURL": "https://feff533a-00b8-423f-86a4-88b558680eba.e1-us-cdp-2.choreoapps.dev",
-    "signOutRedirectURL": "https://feff533a-00b8-423f-86a4-88b558680eba.e1-us-cdp-2.choreoapps.dev",
+    "signInRedirectURL": "https://758ce56d-7d6c-4172-8ea1-56243ed65405.e1-us-cdp-2.choreoapps.dev",
+    "signOutRedirectURL": "https://758ce56d-7d6c-4172-8ea1-56243ed65405.e1-us-cdp-2.choreoapps.dev",
     "scope": ["profile"]
 }
