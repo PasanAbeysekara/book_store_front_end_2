@@ -1,0 +1,7 @@
+{
+    "clientID": "JW8CFVF87wPZZyer5fkH5OcMCQ4a",
+    "baseUrl": "https://api.asgardeo.io/t/pasan",
+    "signInRedirectURL": "https://2a65663d-83c5-46f0-a988-c0d6b7eab1e7.e1-us-cdp-2.choreoapps.dev",
+    "signOutRedirectURL": "https://2a65663d-83c5-46f0-a988-c0d6b7eab1e7.e1-us-cdp-2.choreoapps.dev",
+    "scope": ["profile"]
+}
