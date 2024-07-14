@@ -13,6 +13,15 @@ interface Book {
     copies_in_stock: number;
   }
 
+  interface UpdateBook {
+    book_title: string;
+    author: string;
+    category: string;
+    published_year: number;
+    price: number;
+    copies_in_stock: number;
+  }
+
 export const BookStore: FunctionComponent = (): ReactElement => {
   const {
     getAccessToken,
@@ -36,6 +45,8 @@ export const BookStore: FunctionComponent = (): ReactElement => {
       price: 0,
       copies_in_stock: 0
     });
+    
+    
     const [bookIdToDelete, setBookIdToDelete] = useState<number>(0);
     const [bookIdToGet, setBookIdToGet] = useState<number>(0);
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
@@ -51,6 +62,7 @@ export const BookStore: FunctionComponent = (): ReactElement => {
     const fetchBooks = async () => {
       try {
         const accessToken = await getAccessToken();
+        console.log("Access token:", accessToken);
         const response = await axios.get<Book[]>('https://bc70e030-36d3-4968-a241-e1d14a3748f9-dev.e1-us-cdp-2.choreoapis.dev/bookstore/bookstore-backend/v1.0/books', {
           headers: {
             "Content-Type": "application/json",
@@ -67,6 +79,7 @@ export const BookStore: FunctionComponent = (): ReactElement => {
   
     const addBook = async () => {
       const accessToken = await getAccessToken();
+        console.log("Access token:", accessToken);
       try {
         await axios.post('https://bc70e030-36d3-4968-a241-e1d14a3748f9-dev.e1-us-cdp-2.choreoapis.dev/bookstore/bookstore-backend/v1.0/books', newBook, {
           headers: {
@@ -92,6 +105,7 @@ export const BookStore: FunctionComponent = (): ReactElement => {
   
     const getBookById = async () => {
       const accessToken = await getAccessToken();
+        console.log("Access token:", accessToken);
       try {
         const response = await axios.get<Book>(`https://bc70e030-36d3-4968-a241-e1d14a3748f9-dev.e1-us-cdp-2.choreoapis.dev/bookstore/bookstore-backend/v1.0/books/${bookIdToGet}`, {
           headers: {
@@ -108,8 +122,16 @@ export const BookStore: FunctionComponent = (): ReactElement => {
   
     const updateBook = async () => {
       const accessToken = await getAccessToken();
+        console.log("Access token:", accessToken);
       try {
-        await axios.put('https://bc70e030-36d3-4968-a241-e1d14a3748f9-dev.e1-us-cdp-2.choreoapis.dev/bookstore/bookstore-backend/v1.0/books', updatedBook, {
+        await axios.put(`https://bc70e030-36d3-4968-a241-e1d14a3748f9-dev.e1-us-cdp-2.choreoapis.dev/bookstore/bookstore-backend/v1.0/books/${updatedBook.id}`, {
+          book_title: updatedBook.book_title,
+          author: updatedBook.author,
+          category: updatedBook.category,
+          published_year: updatedBook.published_year,
+          price: updatedBook.price,
+          copies_in_stock: updatedBook.copies_in_stock
+        }, {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + accessToken,
@@ -125,6 +147,7 @@ export const BookStore: FunctionComponent = (): ReactElement => {
           price: 0,
           copies_in_stock: 0
         });
+        
         fetchBooks();
       } catch (error) {
         console.error('Error updating book:', error);
@@ -133,6 +156,7 @@ export const BookStore: FunctionComponent = (): ReactElement => {
   
     const deleteBook = async () => {
       const accessToken = await getAccessToken();
+        console.log("Access token:", accessToken);
       try {
         await axios.delete(`https://bc70e030-36d3-4968-a241-e1d14a3748f9-dev.e1-us-cdp-2.choreoapis.dev/bookstore/bookstore-backend/v1.0/books/${bookIdToDelete}`, {
           headers: {
